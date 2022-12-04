@@ -1,24 +1,36 @@
-
 import FlashCards from './FlashCards';
-import { useState } from 'react';
 import Header from './Header';
+import styled from 'styled-components';
+import GlobalStyle from './assets/css/GlobalStyle';
 
 
-
-function App() {
-
-
+export default function App() {
+  
   return (
 
-    <div className="screen-container">
+    <ScreenContainer>
+      <GlobalStyle/>
       <Header></Header>
       <FlashCards
       
       ></FlashCards>
 
       <div className="footer-concluidos"> 0/4 Concluídos</div>
-    </div>
+    </ScreenContainer>
   )
 }
 
-export default App;
+ const ScreenContainer = styled.div`
+ background-color: #FB6B6B;
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0px;
+  padding: 0px;
+  padding-bottom: 200px;
+ `
+
+
+
