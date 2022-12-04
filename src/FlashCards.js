@@ -14,7 +14,13 @@ function FlashCards() {
 
   return (
     <>
-      {cards.map((c, i) => <FlashCard numero={i} cards={cards}></FlashCard>)}
+      {cards.map((c, i) => 
+      <FlashCard 
+      numero={i} 
+      cards={cards} 
+     
+      
+      ></FlashCard>)}
     </>
   )
 }
