@@ -87,7 +87,7 @@ export default function FlashCard({ cards, numero, setContador, contador }) {
 
             <PerguntaFechada data-test="flashcard">
                 <Zap data-test="flashcard-text">Zap Pergunta {numero + 1}</Zap>
-                <img numero={numero} src={icone_certo}  data-test="zap-icon" ></img>
+                <img numero={numero} src={icone_certo} data-test="zap-icon" ></img>
             </PerguntaFechada>
         )
     }
