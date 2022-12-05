@@ -2,7 +2,7 @@ import styled from "styled-components"
 
 export default function Footer({ contador }) {
     return (
-        <FooterConcluidos> {contador}/8 Concluídos
+        <FooterConcluidos data-test="footer"> {contador}/8 Concluídos
         </FooterConcluidos>
     )
 }
