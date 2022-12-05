@@ -30,7 +30,7 @@ export default function FlashCard({ cards, numero, setContador, contador }) {
     }
 
 
-    if (abrirCard == "PerguntaFechada") {
+    if (abrirCard === "PerguntaFechada") {
         return (
 
             <PerguntaFechada data-test="flashcard">
@@ -39,7 +39,7 @@ export default function FlashCard({ cards, numero, setContador, contador }) {
             </PerguntaFechada>
         )
     }
-    else if (abrirCard == "PerguntaAberta") {
+    else if (abrirCard === "PerguntaAberta") {
         return (
 
             <PerguntaAberta data-test="flashcard">
@@ -49,7 +49,7 @@ export default function FlashCard({ cards, numero, setContador, contador }) {
         )
     }
 
-    else if (abrirCard == "RespostaAberta") {
+    else if (abrirCard === "RespostaAberta") {
         return (
             <RespostaAberta data-test="flashcard">
                 <p data-test="flashcard-text"> {cards[numero].answer}</p>
@@ -63,7 +63,7 @@ export default function FlashCard({ cards, numero, setContador, contador }) {
 
     }
 
-    else if (abrirCard == "PerguntaFechada finalizada1") {
+    else if (abrirCard === "PerguntaFechada finalizada1") {
         return (
 
             <PerguntaFechada data-test="flashcard">
@@ -73,7 +73,7 @@ export default function FlashCard({ cards, numero, setContador, contador }) {
         )
     }
 
-    else if (abrirCard == "PerguntaFechada finalizada2") {
+    else if (abrirCard === "PerguntaFechada finalizada2") {
         return (
 
             <PerguntaFechada data-test="flashcard">
@@ -82,7 +82,7 @@ export default function FlashCard({ cards, numero, setContador, contador }) {
             </PerguntaFechada>
         )
     }
-    else if (abrirCard == "PerguntaFechada finalizada3") {
+    else if (abrirCard === "PerguntaFechada finalizada3") {
         return (
 
             <PerguntaFechada data-test="flashcard">
