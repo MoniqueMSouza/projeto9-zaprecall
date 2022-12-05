@@ -1,9 +1,12 @@
 import seta_play from './assets/img/seta_play.png'
 import seta_virar from './assets/img/seta_virar.png'
+import icone_erro from './assets/img/icone_erro.png'
+import icone_certo from './assets/img/icone_certo.png'
+import icone_quase from './assets/img/icone_quase.png'
 import styled from 'styled-components';
 import { useState } from 'react';
 
-export default function FlashCard({ cards, numero }) {
+export default function FlashCard({ cards, numero, setContador, contador }) {
     const [abrirCard, setAbrirCard] = useState("PerguntaFechada")
 
 
@@ -13,50 +16,78 @@ export default function FlashCard({ cards, numero }) {
     function abrirResposta() {
         setAbrirCard("RespostaAberta")
     }
-    function finalizar() {
-        setAbrirCard("PerguntaFechada finalizada")
+    function finalizar1() {
+        setContador(contador + 1)
+        setAbrirCard("PerguntaFechada finalizada1")
+    }
+    function finalizar2() {
+        setContador(contador + 1)
+        setAbrirCard("PerguntaFechada finalizada2")
+    }
+    function finalizar3() {
+        setContador(contador + 1)
+        setAbrirCard("PerguntaFechada finalizada3")
     }
 
 
     if (abrirCard == "PerguntaFechada") {
         return (
 
-            <PerguntaFechada>
-                <p>Pergunta {numero + 1}</p>
-                <img numero={numero} onClick={abrirPergunta} src={seta_play}></img>
+            <PerguntaFechada data-test="flashcard">
+                <p data-test="flashcard-text">Pergunta {numero + 1}</p>
+                <img numero={numero} onClick={abrirPergunta} src={seta_play} data-test="play-btn"></img>
             </PerguntaFechada>
         )
     }
     else if (abrirCard == "PerguntaAberta") {
         return (
 
-            <PerguntaAberta>
-                <p> {cards[numero].question}</p>
-                <img onClick={abrirResposta} src={seta_virar}></img>
+            <PerguntaAberta data-test="flashcard">
+                <p data-test="flashcard-text"> {cards[numero].question}</p>
+                <img onClick={abrirResposta} src={seta_virar} data-test="turn-btn"></img>
             </PerguntaAberta>
         )
     }
 
     else if (abrirCard == "RespostaAberta") {
         return (
-            <RespostaAberta>
-                <p> {cards[numero].answer}</p>
+            <RespostaAberta data-test="flashcard">
+                <p data-test="flashcard-text"> {cards[numero].answer}</p>
                 <ContainerBotoes>
-                    <button onClick={finalizar} > Não lembrei</button>
-                    <button onClick={finalizar} >Quase não lembrei</button>
-                    <button onClick={finalizar} >Zap!</button>
+                    <button data-test="no-btn" onClick={finalizar1} > Não lembrei</button>
+                    <button data-test="partial-btn" onClick={finalizar2} >Quase não lembrei</button>
+                    <button data-test="zap-btn" onClick={finalizar3} >Zap!</button>
                 </ContainerBotoes>
             </RespostaAberta>
         )
 
     }
 
-    else if (abrirCard == "PerguntaFechada finalizada") {
+    else if (abrirCard == "PerguntaFechada finalizada1") {
         return (
 
-            <PerguntaFechada>
-                <p>Pergunta {numero + 1}</p>
-                <img numero={numero} src={seta_play}></img>
+            <PerguntaFechada data-test="flashcard">
+                <NaoLembrei data-test="flashcard-text">Pergunta {numero + 1}</NaoLembrei>
+                <img numero={numero} src={icone_erro} data-test="no-icon"></img>
+            </PerguntaFechada>
+        )
+    }
+
+    else if (abrirCard == "PerguntaFechada finalizada2") {
+        return (
+
+            <PerguntaFechada data-test="flashcard">
+                <QuaseNaoLembrei data-test="flashcard-text"> Pergunta {numero + 1}</QuaseNaoLembrei>
+                <img numero={numero} src={icone_quase} data-test="partial-icon" ></img>
+            </PerguntaFechada>
+        )
+    }
+    else if (abrirCard == "PerguntaFechada finalizada3") {
+        return (
+
+            <PerguntaFechada data-test="flashcard">
+                <Zap data-test="flashcard-text">Zap Pergunta {numero + 1}</Zap>
+                <img numero={numero} src={icone_certo}  data-test="zap-icon" ></img>
             </PerguntaFechada>
         )
     }
@@ -125,7 +156,6 @@ width: 300px;
   flex-direction: column;
   justify-content: space-between; 
   `
-
 const ContainerBotoes = styled.div`
     display:flex;
 
@@ -159,4 +189,31 @@ border: 1px solid #FF922E;
 background: #2FBE34;
 border: 1px solid #2FBE34;
 }
+  `
+const NaoLembrei = styled.div`
+color:#FF3030;
+font-family: 'Recursive';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+  text-decoration: line-through;
+`
+const QuaseNaoLembrei = styled.div`
+color:#FF922E;
+font-family: 'Recursive';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+  text-decoration: line-through;
+`
+const Zap = styled.div`
+color:#2FBE34;
+font-family: 'Recursive';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+  text-decoration: line-through;
 `

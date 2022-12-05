@@ -1,21 +1,26 @@
 import FlashCards from './FlashCards';
 import Header from './Header';
+import Footer from './Footer';
 import styled from 'styled-components';
+import { useState } from 'react';
 import GlobalStyle from './assets/css/GlobalStyle';
 
 
 export default function App() {
-  
+  const [contador, setContador] = useState(0)
+
   return (
 
     <ScreenContainer>
       <GlobalStyle/>
       <Header></Header>
       <FlashCards
-      
+      contador={contador}
+      setContador={setContador}
       ></FlashCards>
-
-      <div className="footer-concluidos"> 0/4 Concluídos</div>
+      <Footer
+      contador={contador}
+      ></Footer>
     </ScreenContainer>
   )
 }

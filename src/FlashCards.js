@@ -1,6 +1,6 @@
 import FlashCard from "./FlashCard";
 
-function FlashCards() {
+function FlashCards({setContador, contador}) {
   const cards = [
     { question: "O que é JSX?", answer: "Uma extensão da linguagem JavaScript" },
     { question: "O React é __", answer: "Uma biblioteca JavaScript para construção de interfaces" },
@@ -16,6 +16,8 @@ function FlashCards() {
     <>
       {cards.map((c, i) =>
         <FlashCard
+        setContador={setContador}
+        contador={contador}
           numero={i}
           cards={cards}
         ></FlashCard>)}
